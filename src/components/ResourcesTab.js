@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {  useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import ResourceCard from './ResourceCard';
 import Header from './Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,6 +10,8 @@ const ResourcesTab = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const location = useLocation();
     const [activeTab, setActiveTab] = useState('resources');
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage] = useState(6);
 
     useEffect(() => {
         axios.get('https://media-content.ccbp.in/website/react-assignment/resources.json')
@@ -21,7 +23,7 @@ const ResourcesTab = () => {
                 console.error('Error fetching resources:', error);
             });
     }, []);
-    
+
     useEffect(() => {
         if (location.pathname === '/') {
             setActiveTab('resources');
@@ -40,6 +42,17 @@ const ResourcesTab = () => {
         }
         return resource.title && resource.title.toLowerCase().includes(searchTerm.toLowerCase());
     });
+
+    // Calculate number of pages
+    const pageCount = Math.ceil(filteredResources.length / itemsPerPage);
+
+    // Calculate the index of the first and last items on the current page
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = filteredResources.slice(indexOfFirstItem, indexOfLastItem);
+
+    // Change page
+    const paginate = pageNumber => setCurrentPage(pageNumber);
 
     return (
         <div>
@@ -66,13 +79,25 @@ const ResourcesTab = () => {
                     onChange={e => setSearchTerm(e.target.value)}
                 />
                 <div className="row">
-                    {filteredResources.map(resource => (
+                    {currentItems.map(resource => (
                         <div className="col-md-4 mb-4" key={resource.id}>
                             <ResourceCard resource={resource} />
                         </div>
                     ))}
                 </div>
-                {/* Add pagination controls here */}
+                <nav>
+                    <div className="d-flex justify-content-center">
+                        <ul className='pagination'>
+                            {Array.from({ length: pageCount }, (_, i) => (
+                                <li key={i + 1} className={`page-item ${currentPage === i + 1 ? 'active' : ''}`}>
+                                    <a onClick={() => paginate(i + 1)} href="#!" className='page-link'>
+                                        {i + 1}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </nav>
             </div>
         </div>
     );
