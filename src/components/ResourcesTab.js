@@ -43,15 +43,12 @@ const ResourcesTab = () => {
         return resource.title && resource.title.toLowerCase().includes(searchTerm.toLowerCase());
     });
 
-    // Calculate number of pages
     const pageCount = Math.ceil(filteredResources.length / itemsPerPage);
 
-    // Calculate the index of the first and last items on the current page
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = filteredResources.slice(indexOfFirstItem, indexOfLastItem);
 
-    // Change page
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
     return (

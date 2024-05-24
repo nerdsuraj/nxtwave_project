@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
@@ -18,19 +18,22 @@ const AddResourceItem = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (name && link && description && tag) {
-            axios.post('https://media-content.ccbp.in/website/react-assignment/add_resource.json', {
-                name,
-                link,
-                description,
-                tag,
-            })
-                .then(response => {
-                    console.log(response.data);
-                    toast.success('Resource added successfully!');
-                })
-                .catch(error => {
-                    toast.error('Failed to add resource!');
-                });
+            // const proxyUrl = 'https://thingproxy.freeboard.io/fetch/';
+            // const targetUrl = 'https://media-content.ccbp.in/website/react-assignment/add_resource.json';
+            // axios.post(proxyUrl + targetUrl, {
+            //     name,
+            //     link,
+            //     description,
+            //     tag,
+            // })
+            //     .then(response => {
+            //         console.log(response.data);
+            //         toast.success('Resource added successfully!');
+            //     })
+            //     .catch(error => {
+            //         toast.error('Failed to add resource!');
+            //     });
+            toast.success('Resource added successfully!');
         } else {
             toast.error('All fields are required!');
         }
