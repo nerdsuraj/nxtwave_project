@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.4df2c836.css",
-    "main.js": "/static/js/main.d145cea3.js",
-    "static/js/453.39230bbb.chunk.js": "/static/js/453.39230bbb.chunk.js",
-    "index.html": "/index.html",
-    "main.4df2c836.css.map": "/static/css/main.4df2c836.css.map",
-    "main.d145cea3.js.map": "/static/js/main.d145cea3.js.map",
-    "453.39230bbb.chunk.js.map": "/static/js/453.39230bbb.chunk.js.map"
+    "main.css": "/nxtwave_project/static/css/main.4df2c836.css",
+    "main.js": "/nxtwave_project/static/js/main.c0b36581.js",
+    "static/js/453.39230bbb.chunk.js": "/nxtwave_project/static/js/453.39230bbb.chunk.js",
+    "index.html": "/nxtwave_project/index.html",
+    "main.4df2c836.css.map": "/nxtwave_project/static/css/main.4df2c836.css.map",
+    "main.c0b36581.js.map": "/nxtwave_project/static/js/main.c0b36581.js.map",
+    "453.39230bbb.chunk.js.map": "/nxtwave_project/static/js/453.39230bbb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4df2c836.css",
-    "static/js/main.d145cea3.js"
+    "static/js/main.c0b36581.js"
   ]
 }
